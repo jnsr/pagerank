@@ -9,14 +9,13 @@
 #define STRINGSET_H
 
 #include <string>
-using namespace std;
 
 struct Node {
-  string key;
+  std::string key;
   int index;
   Node *next;
-  Node(string k, int i, Node *n) { key = k; index = i; next = n; }
-  Node(string k, Node *n) { key = k; next = n; }
+  Node(std::string k, int i, Node *n) { key = k; index = i; next = n; }
+  Node(std::string k, Node *n) { key = k; next = n; }
   Node() { key = ""; next = NULL; }
 };
 
@@ -30,10 +29,10 @@ class Stringset {
  public:
   Stringset();
   ~Stringset();
-  bool find(string key);
-  int getIndex(string key);
-  void insert(string key, int index);
-  void remove(string key);
+  bool find(std::string key);
+  int getIndex(std::string key);
+  void insert(std::string key, int index);
+  void remove(std::string key);
   void print(void);
 };
 

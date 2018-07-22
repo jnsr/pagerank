@@ -11,10 +11,9 @@
 #include <assert.h>
 #include "stringset.h"
 
-using namespace std;
 
 /* Return a hash for the string s in the range 0..table_size-1 */
-int hash(string s, int table_size)
+int hash(std::string s, int table_size)
 {
   unsigned int i, h = 0;
   for (i=0; i<s.length(); i++)
@@ -51,7 +50,7 @@ Stringset::~Stringset()
 }
 
 /* Return true if key is in the set */
-bool Stringset::find(string key)
+bool Stringset::find(std::string key)
 {
   int h = hash(key, size);
   Node *n = table[h];
@@ -63,7 +62,7 @@ bool Stringset::find(string key)
 }
 
 /* Return index if key is in the set */
-int Stringset::getIndex(string key)
+int Stringset::getIndex(std::string key)
 {
   assert (find(key));
   int h = hash(key, size);
@@ -75,7 +74,7 @@ int Stringset::getIndex(string key)
 }
 
 /* Inserts a new key.  It is an error if key is already in the set. */
-void Stringset::insert(string key, int index)
+void Stringset::insert(std::string key, int index)
 {
   assert (!find(key));
   num_elems++;
@@ -110,7 +109,7 @@ void Stringset::insert(string key, int index)
 }
 
 /* Removes a key.  It is an error if key isn't in the set */
-void Stringset::remove(string key)
+void Stringset::remove(std::string key)
 {
   assert (find(key));
   num_elems--;
@@ -139,7 +138,7 @@ void Stringset::print(void)
   for(int i = 0; i<size; i++){
     Node *n = table[i];
     while(n != NULL){
-      cout << n->key << endl;
+      std::cout << n->key << std::endl;
       n = n->next;
     }
   }

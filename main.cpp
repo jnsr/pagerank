@@ -9,10 +9,9 @@
 #include <string>
 #include <fstream>
 #include "stringset.h"
-using namespace std;
 
 struct Page {
-  string URL;
+  std::string URL;
   double weight;
   double new_weight;
   Node *wordsHead;
@@ -30,7 +29,7 @@ struct Page {
 };
 
 struct Word {
-  string word;
+  std::string word;
   Node *pagesHead;
   Word()
   {
@@ -44,10 +43,10 @@ int main(void)
   Stringset S, W;
   int c, i, totalWords = 0;
   int count = 0;
-  ifstream fin;
-  string s;
+  std::ifstream fin;
+  std::string s;
 
-  cout << "Loading please wait..." << endl;
+  std::cout << "Loading please wait..." << std::endl;
 
   //Get # of pages that need to be stored, also hash all newpage URLs
   fin.open("webpages.txt");
@@ -126,12 +125,11 @@ int main(void)
 
   //User Search
   int scaleFactor = 100 * count;
-  cout << "Enter a string to search for: " << endl;
-  cin >> s;
-  Node *n = wordsArray[W.getIndex(s)].pagesHead;
-  for (n; n != NULL; n=n->next){
-    cout << (int)(scaleFactor * p[(S.getIndex(n->key))].weight);
-    cout << " " + n->key << endl;
+  std::cout << "Enter a string to search for: " << std::endl;
+  std::cin >> s;
+  for (Node *n = wordsArray[W.getIndex(s)].pagesHead; n != NULL; n=n->next){
+    std::cout << (int)(scaleFactor * p[(S.getIndex(n->key))].weight);
+    std::cout << " " + n->key << std::endl;
   }
 
   //Free memory
